@@ -2,12 +2,18 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.border.Border;
@@ -16,12 +22,24 @@ import javax.swing.border.EtchedBorder;
 
 public class Fenetre extends JFrame{
 	
+	 private JMenuBar menuBar = new JMenuBar();
+	 private JMenu options = new JMenu("options");
+	 private JMenuItem item1 = new JMenuItem("relancer");
+	 private JMenuItem item2 = new JMenuItem("quiter");
+	  	
 	public Fenetre() {
 		this.setTitle("Reigns");
 		this.setSize(800, 550);
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	    this.setLocationRelativeTo(null);              
-
+	    this.setLocationRelativeTo(null);  
+	    
+	  //On initialise nos menus   
+	    this.options.add(item1);
+	    this.options.add(item2);
+	    this.menuBar.add(options);
+	    this.setJMenuBar(menuBar);
+	    
+	    
 	    //dÃ©finition du type de bordure
 	    Border loweredetched = BorderFactory.createEtchedBorder(EtchedBorder.LOWERED);
 	    
@@ -72,6 +90,30 @@ public class Fenetre extends JFrame{
 	    pan4.add(pan3);
 	    pan4.add(pan2);
 			
+	    //ecoute des menus
+	    	//relancer le jeux
+	    item1.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
+				new PileCarte();
+			}
+		});
+	    	//quiter l'application
+	    item2.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
+				JOptionPane jop = new JOptionPane();			
+				int option = jop.showConfirmDialog(null, "Voulez-vous arrêter le jeux ?", "Arrêter ?", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+							
+				if(option == JOptionPane.OK_OPTION){
+				  System.exit(0);		
+				}
+			}
+		});
+	    
+	    
 	    this.getContentPane().add(pan4);
 	    this.setVisible(true);
 	}
