@@ -7,6 +7,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -64,10 +66,15 @@ public class Fenetre extends JFrame{
 	    JLouest.setPreferredSize(new Dimension(200, 300));
 	    pan3.add(JLouest);
 	    
+	    
+
 	    //Centre
-	    JLabel JLcentre = new JLabel("CENTRE");
+	    JLabel JLcentre = new JLabel();
 	    JLcentre.setPreferredSize(new Dimension(350, 300));
 	    JLcentre.setBorder(loweredetched);
+	    //chargement de l'image
+	    Icon image = new ImageIcon( "pretendant/test.jpg" );
+	    JLcentre.setIcon(image);
 	    pan3.add(JLcentre);
 	    	    
 	    //Est
