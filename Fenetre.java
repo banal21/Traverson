@@ -29,7 +29,10 @@ public class Fenetre extends JFrame{
 	 private JMenuItem item1 = new JMenuItem("relancer");
 	 private JMenuItem item2 = new JMenuItem("quiter");
 	  	
-	public Fenetre() {
+	public Fenetre(Carte c ) {
+
+		c.readCarte();
+		
 		this.setTitle("Reigns");
 		this.setSize(800, 550);
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -48,10 +51,10 @@ public class Fenetre extends JFrame{
 	    //Nord
 	    JPanel pan1 = new JPanel();
 	    pan1.setPreferredSize(new Dimension(800, 100));
-	    JLabel BtnN1 = new JLabel("Gauche");
+	    JLabel BtnN1 = new JLabel(c.getM_periode());
 	    BtnN1.setPreferredSize(new Dimension(380, 100));
 	    BtnN1.setBorder(loweredetched);
-	    JLabel BtnN2 = new JLabel("Droite");
+	    JLabel BtnN2 = new JLabel(c.getM_lieux());
 	    BtnN2.setPreferredSize(new Dimension(380, 100));
 	    BtnN2.setBorder(loweredetched);
 	    pan1.add(BtnN1);
@@ -62,7 +65,7 @@ public class Fenetre extends JFrame{
 	    pan3.setPreferredSize(new Dimension(800, 300));
 
 	    //Ouest
-	    JButton JLouest = new JButton("OUEST");
+	    JButton JLouest = new JButton(c.getM_choix1());
 	    JLouest.setPreferredSize(new Dimension(200, 300));
 	    pan3.add(JLouest);
 	    
@@ -78,14 +81,14 @@ public class Fenetre extends JFrame{
 	    pan3.add(JLcentre);
 	    	    
 	    //Est
-	    JButton JLest = new JButton("EST");
+	    JButton JLest = new JButton(c.getM_choix2());
 	    JLest.setPreferredSize(new Dimension(200, 300));
 	    pan3.add(JLest);
 	    
 	  //Sud
 	    JPanel pan2 = new JPanel();
 	    pan2.setPreferredSize(new Dimension(800, 100));
-	    JLabel JL = new JLabel("Question ?");
+	    JLabel JL = new JLabel(c.getM_question());
 	    JL.setPreferredSize(new Dimension(760, 100));
 	    JL.setBorder(loweredetched);
 	    pan2.add(JL);

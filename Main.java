@@ -6,7 +6,8 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Fenetre F = new Fenetre();
+		Carte c = new Carte();
+		Fenetre F = new Fenetre(c);
 	}
 
 }

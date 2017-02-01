@@ -6,7 +6,13 @@ public class dragueur extends Pretendant {
 	}
 	
 	public void rendezVous(){
-		viderPile();
+		PileCarte test = new PileCarte();
+		try {
+			test.viderPile();
+		} catch (pileException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }
