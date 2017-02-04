@@ -1,4 +1,4 @@
-soir
+apres-midi
 piscine
 Je suis contente que tu soit venu a la piscine, tu aime nager?
 non j'accompagne mon copain
@@ -6,4 +6,4 @@ oui, tu veux faire une longueur?
 0
 10
 drageur
-piscine_coule.txt
+piscine_longueur.txt

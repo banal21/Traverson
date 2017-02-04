@@ -2,7 +2,21 @@ import java.util.ArrayList;
 
 public class PileCarte implements pile{
 
-	private ArrayList<Carte> lesCartes = new ArrayList<Carte>();
+	private static ArrayList<Carte> lesCartes = new ArrayList<Carte>();
+	
+	public PileCarte(){
+//generer l'empilage des carte automatique
+
+		Carte c3  = new Carte();
+		c3.readCarte("carte/piscine_longueur.txt");
+		empiler(c3);
+		Carte c  = new Carte();
+		c.readCarte("carte/soireeCinee.txt");
+		Carte c2  = new Carte();
+		c2.readCarte("carte/piscine.txt");
+		empiler(c);
+		empiler(c2);
+	}
 	
 	public void rejouer(){
 		lesCartes = new ArrayList<Carte>();		
@@ -14,11 +28,8 @@ public class PileCarte implements pile{
     }
     
     @Override
-    public Carte sommet() throws pileException {
-        if(this.estVide()){
-            throw new pileException();
-        }
-        else return lesCartes.get(0);
+    public int sommet() throws pileException {
+        return lesCartes.size();
     }
     @Override
 	public void viderPile()throws pileException {
@@ -32,8 +43,19 @@ public class PileCarte implements pile{
 
 	@Override
 	public void empiler(Carte uneCarte) {
-		// TODO Auto-generated method stub
-		
+		lesCartes.add(uneCarte);
+	}
+
+	@Override
+	public Carte depiler() throws pileException {
+		if(this.estVide()){
+            throw new pileException();
+        }
+        else {
+        	Carte carte = lesCartes.get(lesCartes.size() - 1);
+        	lesCartes.remove(lesCartes.size() - 1);
+        	return carte;
+        }
 	}
 
 }

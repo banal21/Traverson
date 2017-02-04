@@ -1,7 +1,8 @@
 
-public class dragueur extends Pretendant {
+public class drageur extends Pretendant {
 
-	public dragueur() {
+	static int nbpts = 0;
+	public drageur() {
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -13,6 +14,14 @@ public class dragueur extends Pretendant {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	static void evolutionRelation(int nb){
+		nbpts= nbpts + nb;
+	}
+	
+	public static void test(){
+		
 	}
 
 }

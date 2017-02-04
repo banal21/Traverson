@@ -28,10 +28,23 @@ public class Fenetre extends JFrame{
 	 private JMenu options = new JMenu("options");
 	 private JMenuItem item1 = new JMenuItem("relancer");
 	 private JMenuItem item2 = new JMenuItem("quiter");
-	  	
-	public Fenetre(Carte c ) {
+	 private JPanel pan1;
+	 private JLabel BtnN1;
+	 private Icon imageP;
+	 private JLabel BtnN2;
+	 private Icon imagel;
+	 private JPanel pan3;
+	 private JButton JLouest;
+	 private JLabel JLcentre;
+	 private Icon image;
+	 private JButton JLest;
+	 private JPanel pan2;
+	 private JLabel JL;
+	 private JPanel pan4;
 
-		c.readCarte();
+	 
+	public Fenetre() {
+
 		
 		this.setTitle("Reigns");
 		this.setSize(800, 550);
@@ -44,69 +57,69 @@ public class Fenetre extends JFrame{
 	    this.menuBar.add(options);
 	    this.setJMenuBar(menuBar);
 	    
-	    
 	    //définition du type de bordure
 	    Border loweredetched = BorderFactory.createEtchedBorder(EtchedBorder.LOWERED);
 	    
 	    //Nord
-	    JPanel pan1 = new JPanel();
+	    pan1 = new JPanel();
 	    pan1.setPreferredSize(new Dimension(800, 100));
-	    JLabel BtnN1 = new JLabel(c.getM_periode());
+	    BtnN1 = new JLabel();
 	    BtnN1.setPreferredSize(new Dimension(380, 100));
 	    BtnN1.setBorder(loweredetched);
-	    JLabel BtnN2 = new JLabel(c.getM_lieux());
+		BtnN2 = new JLabel();
 	    BtnN2.setPreferredSize(new Dimension(380, 100));
 	    BtnN2.setBorder(loweredetched);
+
 	    pan1.add(BtnN1);
-	    pan1.add(BtnN2);	    
+	    pan1.add(BtnN2);
 	    
 	    //Milieu
-	    JPanel pan3 = new JPanel();
+	    pan3 = new JPanel();
 	    pan3.setPreferredSize(new Dimension(800, 300));
 
 	    //Ouest
-	    JButton JLouest = new JButton(c.getM_choix1());
+	    JLouest = new JButton();
 	    JLouest.setPreferredSize(new Dimension(200, 300));
 	    pan3.add(JLouest);
-	    
-	    
-
 	    //Centre
-	    JLabel JLcentre = new JLabel();
+	    JLcentre = new JLabel();
 	    JLcentre.setPreferredSize(new Dimension(350, 300));
 	    JLcentre.setBorder(loweredetched);
-	    //chargement de l'image
-	    Icon image = new ImageIcon( "pretendant/test.jpg" );
-	    JLcentre.setIcon(image);
+	    
 	    pan3.add(JLcentre);
-	    	    
+	    
 	    //Est
-	    JButton JLest = new JButton(c.getM_choix2());
+	    JLest = new JButton();
 	    JLest.setPreferredSize(new Dimension(200, 300));
 	    pan3.add(JLest);
 	    
-	  //Sud
-	    JPanel pan2 = new JPanel();
+		  //Sud
+	    pan2 = new JPanel();
 	    pan2.setPreferredSize(new Dimension(800, 100));
-	    JLabel JL = new JLabel(c.getM_question());
+	    JL = new JLabel();
 	    JL.setPreferredSize(new Dimension(760, 100));
 	    JL.setBorder(loweredetched);
 	    pan2.add(JL);
 	    
-	    JPanel pan4 = new JPanel();
+	    pan4 = new JPanel();
 	    pan4.setPreferredSize(new Dimension(800, 550));
 	  //On positionne maintenant ces trois lignes en colonne
 	    pan4.add(pan1);
 	    pan4.add(pan3);
 	    pan4.add(pan2);
-			
+	    
 	    //ecoute des menus
-	    	//relancer le jeux
+    	//relancer le jeux
 	    item1.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-				new PileCarte();
+				try {
+					Game.startGame();
+				} catch (pileException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 	    	//quiter l'application
@@ -122,9 +135,56 @@ public class Fenetre extends JFrame{
 				}
 			}
 		});
-	    
-	    
+
 	    this.getContentPane().add(pan4);
 	    this.setVisible(true);
 	}
+	
+	public void afficheCarte(Carte c){
+		BtnN1.setText(c.getM_periode()); 
+		imageP = new ImageIcon( "periodeImg/"+c.getM_periode()+".jpg" );
+		BtnN1.setIcon(imageP);
+	    BtnN2.setText(c.getM_lieux());
+	    imagel = new ImageIcon( "lieux/"+c.getM_lieux()+".jpg" );
+		BtnN2.setIcon(imagel);
+		
+	    JLouest.setText(c.getM_choix1());
+	   
+		image = new ImageIcon( "pretendant/"+c.getM_lePretendant()+".jpg" );
+	    JLcentre.setIcon(image);
+	    JLest.setText(c.getM_choix2());
+	    JL.setText(c.getM_question());
+	    
+	    JLouest.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
+				Game.evolutionChoix1();
+					
+					if(c.getM_carteSuivanteChoix1().length()>0){
+						Carte maCarte = new Carte("carte/"+c.getM_carteSuivanteChoix1());
+						Game.pile.empiler(maCarte);
+					}
+					
+					Game.nextCarte();
+			}
+		});
+	    JLest.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
+				
+				Game.evolutionChoix2();
+				
+				
+				if(c.getM_carteSuivanteChoix2() != null)
+					c.readCarte(c.getM_carteSuivanteChoix2());
+				
+				Game.nextCarte();
+			}
+		});
+		
+	    
+	}
+	
 }

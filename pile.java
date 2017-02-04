@@ -6,6 +6,7 @@ public interface pile {
 
 	public boolean estVide();
 	public void empiler (Carte uneCarte);
-	public Carte sommet() throws pileException;
+	public int sommet() throws pileException;
 	public void viderPile() throws pileException;
+	public Carte depiler() throws pileException;
 }
