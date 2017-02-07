@@ -41,7 +41,6 @@ public class Fenetre extends JFrame{
 	 private JPanel pan2;
 	 private JLabel JL;
 	 private JPanel pan4;
-
 	 
 	public Fenetre() {
 
@@ -154,36 +153,42 @@ public class Fenetre extends JFrame{
 	    JLcentre.setIcon(image);
 	    JLest.setText(c.getM_choix2());
 	    JL.setText(c.getM_question());
-	    
+	    if (JLouest.getActionListeners().length > 0) {
+		    JLouest.removeActionListener(JLouest.getActionListeners()[0]);
+		}
 	    JLouest.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
+				System.out.println(e.getActionCommand());
 				Game.evolutionChoix1();
 					
-					if(c.getM_carteSuivanteChoix1().length()>0){
-						Carte maCarte = new Carte("carte/"+c.getM_carteSuivanteChoix1());
-						Game.pile.empiler(maCarte);
-					}
+//					if(c.getM_carteSuivanteChoix1().length()>0){
+//						Carte maCarte = new Carte("carte/"+c.getM_carteSuivanteChoix1());
+//						Game.pile.empiler(maCarte);
+//					}
 					
-					Game.nextCarte();
+				Game.nextCarte();
 			}
 		});
+	    if (JLest.getActionListeners().length > 0) {
+	    	JLest.removeActionListener(JLest.getActionListeners()[0]);
+		}
 	    JLest.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
 				
 				Game.evolutionChoix2();
-				
-				
-				if(c.getM_carteSuivanteChoix2() != null)
-					c.readCarte(c.getM_carteSuivanteChoix2());
+			
+//				if(c.getM_carteSuivanteChoix2() {
+//					Carte maCarte = new Carte("carte/"+c.getM_carteSuivanteChoix2());
+//					Game.pile.empiler(maCarte);
+//				}
 				
 				Game.nextCarte();
 			}
 		});
-		
 	    
 	}
 	

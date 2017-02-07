@@ -100,7 +100,7 @@ public class Carte {
 		InputStreamReader lecture=new InputStreamReader(flux);
 		BufferedReader buff=new BufferedReader(lecture);
 		String ligne;
-		for(int i=0; i<9;i++){
+		for(int i=0; i<10;i++){
 			ligne=buff.readLine();
 			
 			switch (i) {
@@ -153,5 +153,8 @@ public class Carte {
 	public Carte(){
 	}
 	
+	public void actionLancee(){
+		
+	}
 
 }

@@ -1,21 +1,85 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class PileCarte implements pile{
 
 	private static ArrayList<Carte> lesCartes = new ArrayList<Carte>();
+	private static ArrayList<Carte> lesCartesMatin = new ArrayList<Carte>();
+	private static ArrayList<Carte> lesCartesMidi = new ArrayList<Carte>();
+	private static ArrayList<Carte> lesCartesAM = new ArrayList<Carte>();
+	private static ArrayList<Carte> lesCartesSoir= new ArrayList<Carte>();
+
 	
 	public PileCarte(){
 //generer l'empilage des carte automatique
+		File file = new File("carte");
+		if (file.isDirectory()) {
+			for (File f : file.listFiles()) {
+				Carte c = new Carte();
+				c.readCarte(f.getPath());				
+				switch (c.getM_periode()) {
+				case "matin":
+					lesCartesMatin.add(c);
+					break;
+				case "midi":
+					lesCartesMidi.add(c);
+					break;
+				case "apres-midi":
+					lesCartesAM.add(c);
+					break;
+				case "soir":
+					lesCartesSoir.add(c);
+					break;
+				default:
+					break;
+				} 
+			}
 
-		Carte c3  = new Carte();
-		c3.readCarte("carte/piscine_longueur.txt");
-		empiler(c3);
-		Carte c  = new Carte();
-		c.readCarte("carte/soireeCinee.txt");
-		Carte c2  = new Carte();
-		c2.readCarte("carte/piscine.txt");
-		empiler(c);
-		empiler(c2);
+
+			Random randomGenerator = new Random();
+			ArrayList<Carte> CarteAl = new ArrayList<Carte>();
+			CarteAl.addAll(lesCartesSoir);
+			while(!CarteAl.isEmpty()){
+				int index = randomGenerator.nextInt(CarteAl.size());
+				Carte c1 = CarteAl.get(index);
+		        empiler(c1);
+		        CarteAl.remove(index);
+				
+			}
+
+			
+			CarteAl.addAll(lesCartesAM);
+			while(!CarteAl.isEmpty()){
+				int index = randomGenerator.nextInt(CarteAl.size());
+				Carte c1 = CarteAl.get(index);
+		        empiler(c1);
+		        CarteAl.remove(index);
+				
+			}
+			
+
+			CarteAl.addAll(lesCartesMidi);
+			while(!CarteAl.isEmpty()){
+				int index = randomGenerator.nextInt(CarteAl.size());
+				Carte c1 = CarteAl.get(index);
+		        empiler(c1);
+		        CarteAl.remove(index);
+				
+			}
+			
+
+			CarteAl.addAll(lesCartesMatin);
+			while(!CarteAl.isEmpty()){
+				int index = randomGenerator.nextInt(CarteAl.size());
+		        Carte c1 = CarteAl.get(index);
+		        empiler(c1);
+		        CarteAl.remove(index);
+			} 
+		}
 	}
 	
 	public void rejouer(){
@@ -56,6 +120,23 @@ public class PileCarte implements pile{
         	lesCartes.remove(lesCartes.size() - 1);
         	return carte;
         }
+	}
+	
+	public void depilerPretendant(String leP){
+		boolean is_pretendant = false;
+		try {
+			while (!is_pretendant) {
+				Carte c;
+				c = depiler();
+				if (c.getM_lePretendant() == leP) {
+					is_pretendant = true;
+					empiler(c);
+				}
+			}
+		} catch (pileException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

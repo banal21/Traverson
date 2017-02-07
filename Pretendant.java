@@ -4,7 +4,7 @@ public class Pretendant {
 	private int m_point;
 
 	
-	public void rendezVous(){
+	public void rendezVous() throws pileException{
 		
 	}
 }

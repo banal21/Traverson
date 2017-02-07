@@ -17,6 +17,7 @@ public class Game {
 				}
 				F.afficheCarte(currentCarte);	
 			}
+				
 		} catch (pileException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -25,6 +26,7 @@ public class Game {
 	
 	public static void evolutionChoix1(){
 
+//		currentCarte.actionLancee(choix1);
 		switch (currentCarte.getM_lePretendant()) {
 		case "drageur":
 			drageur.evolutionRelation(Integer.parseInt(currentCarte.getM_reponseChoix1()));
@@ -34,12 +36,14 @@ public class Game {
 			break;
 		default:
 			break;
-		}
+		} 
 	}
 	
 	
 	public static void evolutionChoix2(){
 
+//		currentCarte.actionLancee(choix2);
+		
 		switch (currentCarte.getM_lePretendant()) {
 		case "drageur":
 			drageur.evolutionRelation(Integer.parseInt(currentCarte.getM_reponseChoix2()));
