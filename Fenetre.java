@@ -160,7 +160,6 @@ public class Fenetre extends JFrame{
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-				System.out.println(e.getActionCommand());
 				Game.evolutionChoix1();
 					
 //					if(c.getM_carteSuivanteChoix1().length()>0){
