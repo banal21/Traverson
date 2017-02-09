@@ -1,8 +1,13 @@
+package Game;
+import Cartes.ICarte;
+import Pretandants.drageur;
+import Pretandants.geek;
+import View.Fenetre;
 
 public class Game {
 	public static PileCarte pile;
 	public static Fenetre F;
-	public static Carte currentCarte;
+	public static ICarte currentCarte;
 	public static void startGame() throws pileException{
 		pile = new PileCarte();
 		nextCarte();

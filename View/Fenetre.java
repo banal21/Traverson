@@ -1,3 +1,4 @@
+package View;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -20,6 +21,10 @@ import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
+
+import Cartes.ICarte;
+import Game.Game;
+import Game.pileException;
 
 
 public class Fenetre extends JFrame{
@@ -139,7 +144,7 @@ public class Fenetre extends JFrame{
 	    this.setVisible(true);
 	}
 	
-	public void afficheCarte(Carte c){
+	public void afficheCarte(ICarte c){
 		BtnN1.setText(c.getM_periode()); 
 		imageP = new ImageIcon( "periodeImg/"+c.getM_periode()+".jpg" );
 		BtnN1.setIcon(imageP);

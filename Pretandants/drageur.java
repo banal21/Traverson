@@ -1,3 +1,6 @@
+package Pretandants;
+import Game.PileCarte;
+import Game.pileException;
 
 public class drageur extends Pretendant {
 
@@ -16,7 +19,7 @@ public class drageur extends Pretendant {
 		}
 	}
 	
-	static void evolutionRelation(int nb){
+	public static void evolutionRelation(int nb){
 		nbpts= nbpts + nb;
 	}
 	

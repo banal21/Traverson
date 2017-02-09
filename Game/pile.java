@@ -1,3 +1,5 @@
+package Game;
+import Cartes.ICarte;
 
 public interface pile {
 	/* 
@@ -5,8 +7,8 @@ public interface pile {
 	 * */
 
 	public boolean estVide();
-	public void empiler (Carte uneCarte);
+	public void empiler (ICarte uneCarte);
 	public int sommet() throws pileException;
 	public void viderPile() throws pileException;
-	public Carte depiler() throws pileException;
+	public ICarte depiler() throws pileException;
 }

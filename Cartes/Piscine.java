@@ -1,5 +1,9 @@
+package Cartes;
+import Game.Game;
+import Pretandants.drageur;
+import Pretandants.geek;
 
-public class Piscine extends Carte {
+public class Piscine extends Carte implements ICarte {
 	public void actionLancee(String choix){
 		if(choix == "choix1"){
 			switch (Game.currentCarte.getM_lePretendant()) {
@@ -30,5 +34,17 @@ public class Piscine extends Carte {
 //
 //	@Override
 //	public 
+
+	@Override
+	public void actionLancee() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void evolutionRelation() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

@@ -1,3 +1,4 @@
+package Cartes;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -5,7 +6,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-public class Carte {
+import Pretandants.Pretendant;
+
+abstract class Carte implements ICarte {
 
 	private String m_question, m_choix1, m_choix2, m_periode,m_lieux, m_reponseChoix1, m_reponseChoix2, m_lePretendant,m_carteSuivanteChoix1,m_carteSuivanteChoix2 ;  
 	private ArrayList<Pretendant> lesPretendants = new ArrayList<Pretendant>();
@@ -92,69 +95,6 @@ public class Carte {
 		this.m_carteSuivanteChoix2 = m_carteSuivanteChoix2;
 	}
 	
-	
-	public void readCarte(String carte){
-
-		try{
-		InputStream flux=new FileInputStream(carte); 
-		InputStreamReader lecture=new InputStreamReader(flux);
-		BufferedReader buff=new BufferedReader(lecture);
-		String ligne;
-		for(int i=0; i<10;i++){
-			ligne=buff.readLine();
-			
-			switch (i) {
-			case 0:
-				m_periode = ligne.toString();
-				break;
-			case 1:
-				m_lieux = ligne.toString();
-				break;
-			case 2:
-				m_question = ligne.toString();
-				break;
-			case 3:
-				m_choix1 = ligne.toString();
-				break;
-			case 4:
-				m_choix2 = ligne.toString();
-				break;
-			case 5:
-				m_reponseChoix1 = (ligne.toString());
-				break;
-			case 6:
-				m_reponseChoix2 = (ligne.toString());
-				break;
-			case 7:
-				m_lePretendant = (ligne.toString());
-				break;
-			case 8:
-				m_carteSuivanteChoix1 = (ligne.toString());
-				break;
-			case 9:
-				m_carteSuivanteChoix2 = (ligne.toString());
-				break;
-			default:
-				break;
-			}	
-		
-				
-		}
-		buff.close(); 
-		}		
-		catch (Exception e){
-		System.out.println(e.toString());
-		}
-	}
-
-	public Carte(String name) {
-		readCarte(name);
-	}
-	public Carte(){
-	}
-	
-	public void actionLancee(){
-		
-	}
+	public abstract void actionLancee();
 
 }
