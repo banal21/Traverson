@@ -1,8 +1,8 @@
 package Pretandants;
 
-public class pretendantNormale extends Pretendant {
+public class PretendantNormale extends Pretendant {
 
-	public pretendantNormale() {
+	public PretendantNormale() {
 		// TODO Auto-generated constructor stub
 	}
 

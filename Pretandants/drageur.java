@@ -2,10 +2,10 @@ package Pretandants;
 import Game.PileCarte;
 import Game.pileException;
 
-public class drageur extends Pretendant {
+public class Drageur extends Pretendant implements IPretendant {
 
 	static int nbpts = 0;
-	public drageur() {
+	public Drageur() {
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -19,12 +19,13 @@ public class drageur extends Pretendant {
 		}
 	}
 	
-	public static void evolutionRelation(int nb){
-		nbpts= nbpts + nb;
-	}
-	
 	public static void test(){
 		
+	}
+
+	@Override
+	public void evolutionRelation(int nb) {
+		nbpts= nbpts + nb;
 	}
 
 }

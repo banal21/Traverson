@@ -2,15 +2,15 @@ package Pretandants;
 import Game.Game;
 import Game.pileException;
 
-public class geek extends Pretendant {
+public class Geek extends Pretendant  implements IPretendant{
 
 	static int nbpts = 0;
 	
-	public geek() {
+	public Geek() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public static void evolutionRelation(int nb){
+	public void evolutionRelation(int nb){
 		nbpts= nbpts + nb;
 		if(nbpts >= 50){
 			Game.pile.depilerPretendant("geek");
