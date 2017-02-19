@@ -1,34 +1,34 @@
 package Cartes;
 import Game.Game;
-import Pretandants.drageur;
-import Pretandants.geek;
+import Pretandants.Drageur;
+import Pretandants.Geek;
 
 public class Piscine extends Carte implements ICarte {
 	public void actionLancee(String choix){
 		if(choix == "choix1"){
-			switch (Game.currentCarte.getM_lePretendant()) {
-			case "drageur":
-				drageur.evolutionRelation(Integer.parseInt(Game.currentCarte.getM_reponseChoix1()));
-				break;
-			case "geek":
-				geek.evolutionRelation(Integer.parseInt(Game.currentCarte.getM_reponseChoix1()));
-				break;
-			default:
-				break;
-			}
-		}
-		
-		if(choix=="choix2"){
-			switch (Game.currentCarte.getM_lePretendant()) {
-			case "drageur":
-				drageur.evolutionRelation(Integer.parseInt(Game.currentCarte.getM_reponseChoix2()));
-				break;
-			case "geek":
-				geek.evolutionRelation(Integer.parseInt(Game.currentCarte.getM_reponseChoix2()));
-				break;
-			default:
-				break;
-			}	
+//			switch (Game.currentCarte.getM_lePretendant()) {
+//			case "drageur":
+//				Drageur.evolutionRelation(Integer.parseInt(Game.currentCarte.getM_reponseChoix1()));
+//				break;
+//			case "geek":
+//				Geek.evolutionRelation(Integer.parseInt(Game.currentCarte.getM_reponseChoix1()));
+//				break;
+//			default:
+//				break;
+//			}
+//		}
+//		
+//		if(choix=="choix2"){
+//			switch (Game.currentCarte.getM_lePretendant()) {
+//			case "drageur":
+//				Drageur.evolutionRelation(Integer.parseInt(Game.currentCarte.getM_reponseChoix2()));
+//				break;
+//			case "geek":
+//				Geek.evolutionRelation(Integer.parseInt(Game.currentCarte.getM_reponseChoix2()));
+//				break;
+//			default:
+//				break;
+//			}	
 		}
 	}
 //

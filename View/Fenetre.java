@@ -1,13 +1,9 @@
 package View;
-import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -18,7 +14,6 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.UIManager;
 import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
 
@@ -27,6 +22,7 @@ import Game.Game;
 import Game.pileException;
 
 
+@SuppressWarnings("serial")
 public class Fenetre extends JFrame{
 	
 	 private JMenuBar menuBar = new JMenuBar();
@@ -131,8 +127,7 @@ public class Fenetre extends JFrame{
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-				JOptionPane jop = new JOptionPane();			
-				int option = jop.showConfirmDialog(null, "Voulez-vous arrêter le jeux ?", "Arrêter ?", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+				int option = JOptionPane.showConfirmDialog(null, "Voulez-vous arrêter le jeux ?", "Arrêter ?", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 							
 				if(option == JOptionPane.OK_OPTION){
 				  System.exit(0);		

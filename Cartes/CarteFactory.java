@@ -52,7 +52,7 @@ public class CarteFactory {
 					EndCarte.setM_reponseChoix1(ligne.toString());
 					break;
 				case 6:
-					EndCarte.setM_carteSuivanteChoix2(ligne.toString());
+					EndCarte.setM_reponseChoix2(ligne.toString());
 					break;
 				case 7:
 					EndCarte.setM_lePretendant(ligne.toString());
