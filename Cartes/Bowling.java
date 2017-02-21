@@ -1,6 +1,6 @@
 package Cartes;
 
-public class Cinema extends Carte implements ICarte {
+public class Bowling extends Carte implements ICarte {
 	
 	@Override
 	public void actionLancee() {
@@ -13,5 +13,6 @@ public class Cinema extends Carte implements ICarte {
 		// TODO Auto-generated method stub
 		
 	}
+
 
 }

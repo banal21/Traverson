@@ -10,7 +10,8 @@ import Pretandants.Pretendant;
 
 abstract class Carte implements ICarte {
 
-	private String m_question, m_choix1, m_choix2, m_periode,m_lieux, m_reponseChoix1, m_reponseChoix2, m_lePretendant,m_carteSuivanteChoix1,m_carteSuivanteChoix2 ;  
+	private String[]  m_lePretendant,m_reponseChoix1, m_reponseChoix2;
+	private String m_question, m_choix1, m_choix2, m_periode,m_lieux ,m_carteSuivanteChoix1,m_carteSuivanteChoix2 ;  
 	private ArrayList<Pretendant> lesPretendants = new ArrayList<Pretendant>();
 	
 
@@ -54,27 +55,27 @@ abstract class Carte implements ICarte {
 		this.m_lieux = m_lieux;
 	}
 
-	public String getM_reponseChoix1() {
+	public String[] getM_reponseChoix1() {
 		return m_reponseChoix1;
 	}
 
-	public void setM_reponseChoix1(String m_reponseChoix1) {
+	public void setM_reponseChoix1(String[] m_reponseChoix1) {
 		this.m_reponseChoix1 = m_reponseChoix1;
 	}
 
-	public String getM_reponseChoix2() {
+	public String[] getM_reponseChoix2() {
 		return m_reponseChoix2;
 	}
 
-	public void setM_reponseChoix2(String m_reponseChoix2) {
+	public void setM_reponseChoix2(String[] m_reponseChoix2) {
 		this.m_reponseChoix2 = m_reponseChoix2;
 	}
 
-	public String getM_lePretendant() {
+	public String[] getM_lePretendant() {
 		return m_lePretendant;
 	}
 
-	public void setM_lePretendant(String m_lePretendant) {
+	public void setM_lePretendant(String[] m_lePretendant) {
 		this.m_lePretendant = m_lePretendant;
 	}
 

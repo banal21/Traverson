@@ -82,48 +82,6 @@ public class PileCarte implements pile{
 				}
 
 			}
-			
-			
-			
-//			Random randomGenerator = new Random();
-//			ArrayList<Carte> CarteAl = new ArrayList<Carte>();
-//			CarteAl.addAll(lesCartesSoir);
-//			while(!CarteAl.isEmpty()){
-//				int index = randomGenerator.nextInt(CarteAl.size());
-//				Carte c1 = CarteAl.get(index);
-//		        empiler(c1);
-//		        CarteAl.remove(index);
-//				
-//			}
-//
-//			
-//			CarteAl.addAll(lesCartesAM);
-//			while(!CarteAl.isEmpty()){
-//				int index = randomGenerator.nextInt(CarteAl.size());
-//				Carte c1 = CarteAl.get(index);
-//		        empiler(c1);
-//		        CarteAl.remove(index);
-//				
-//			}
-//			
-//
-//			CarteAl.addAll(lesCartesMidi);
-//			while(!CarteAl.isEmpty()){
-//				int index = randomGenerator.nextInt(CarteAl.size());
-//				Carte c1 = CarteAl.get(index);
-//		        empiler(c1);
-//		        CarteAl.remove(index);
-//				
-//			}
-//			
-//
-//			CarteAl.addAll(lesCartesMatin);
-//			while(!CarteAl.isEmpty()){
-//				int index = randomGenerator.nextInt(CarteAl.size());
-//		        Carte c1 = CarteAl.get(index);
-//		        empiler(c1);
-//		        CarteAl.remove(index);
-//			} 
 		}
 	}
 	
@@ -181,7 +139,7 @@ public class PileCarte implements pile{
     @Override
 	public void viderPile()throws pileException {
         if(this.estVide()){
-            throw new pileException();
+            Game.F.partieFini();
         }
         else {
             lesCartes.remove(this.sommet());
@@ -211,7 +169,7 @@ public class PileCarte implements pile{
 			while (!is_pretendant) {
 				ICarte c;
 				c = depiler();
-				if (c.getM_lePretendant() == leP) {
+				if (c.getM_lePretendant()[Game.indexAleatoire] == leP) {
 					is_pretendant = true;
 					empiler(c);
 				}

@@ -49,13 +49,13 @@ public class CarteFactory {
 					EndCarte.setM_choix2(ligne.toString());
 					break;
 				case 5:
-					EndCarte.setM_reponseChoix1(ligne.toString());
+					EndCarte.setM_reponseChoix1(ligne.toString().split(";"));
 					break;
 				case 6:
-					EndCarte.setM_reponseChoix2(ligne.toString());
+					EndCarte.setM_reponseChoix2(ligne.toString().split(";"));
 					break;
 				case 7:
-					EndCarte.setM_lePretendant(ligne.toString());
+					EndCarte.setM_lePretendant(ligne.toString().split(";"));
 					break;
 				case 8:
 					EndCarte.setM_carteSuivanteChoix1(ligne.toString());
@@ -71,7 +71,7 @@ public class CarteFactory {
 			return EndCarte;
 			}		
 			catch (Exception e){
-			System.out.println(e.toString());
+				System.out.println(e.toString());
 			}
 		
 		return null;

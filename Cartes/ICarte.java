@@ -30,18 +30,17 @@ public interface ICarte {
 
 	public void setM_lieux(String m_lieux);
 
-	public String getM_reponseChoix1();
+	public String[] getM_reponseChoix1();
 
-	public void setM_reponseChoix1(String m_reponseChoix1);
+	public void setM_reponseChoix1(String[] strings);
 
-	public String getM_reponseChoix2();
+	public String[] getM_reponseChoix2();
 
-	public void setM_reponseChoix2(String m_reponseChoix2);
+	public void setM_reponseChoix2(String[] strings);
 
-	public String getM_lePretendant();
+	public String[] getM_lePretendant();
 	
-	public void setM_lePretendant(String m_lePretendant);
-
+	public void setM_lePretendant(String[] strings);
 
 	public String getM_carteSuivanteChoix1();
 

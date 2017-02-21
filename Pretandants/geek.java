@@ -4,8 +4,16 @@ import Game.pileException;
 
 public class Geek extends Pretendant  implements IPretendant{
 
-	static int nbpts = 0;
+	private static int nbpts = 0;
 	
+	public static int getNbpts() {
+		return nbpts;
+	}
+
+	public static void setNbpts(int nbpts) {
+		Geek.nbpts = nbpts;
+	}
+
 	public Geek() {
 		// TODO Auto-generated constructor stub
 	}

@@ -20,6 +20,8 @@ import javax.swing.border.EtchedBorder;
 import Cartes.ICarte;
 import Game.Game;
 import Game.pileException;
+import Pretandants.Drageur;
+import Pretandants.Geek;
 
 
 @SuppressWarnings("serial")
@@ -149,8 +151,9 @@ public class Fenetre extends JFrame{
 		
 	    JLouest.setText(c.getM_choix1());
 	   
-		image = new ImageIcon( "pretendant/"+c.getM_lePretendant()+".jpg" );
+		image = new ImageIcon( "pretendant/"+c.getM_lePretendant()[Game.indexAleatoire]+".jpg" );
 	    JLcentre.setIcon(image);
+	    JLcentre.setText("");
 	    JLest.setText(c.getM_choix2());
 	    JL.setText(c.getM_question());
 	    if (JLouest.getActionListeners().length > 0) {
@@ -160,13 +163,7 @@ public class Fenetre extends JFrame{
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-				Game.evolutionChoix1();
-					
-//					if(c.getM_carteSuivanteChoix1().length()>0){
-//						Carte maCarte = new Carte("carte/"+c.getM_carteSuivanteChoix1());
-//						Game.pile.empiler(maCarte);
-//					}
-					
+				Game.evolutionChoix1();					
 				Game.nextCarte();
 			}
 		});
@@ -177,17 +174,39 @@ public class Fenetre extends JFrame{
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-				
 				Game.evolutionChoix2();
-			
-//				if(c.getM_carteSuivanteChoix2() {
-//					Carte maCarte = new Carte("carte/"+c.getM_carteSuivanteChoix2());
-//					Game.pile.empiler(maCarte);
-//				}
-				
 				Game.nextCarte();
 			}
 		});
+	    
+	}
+	
+	public void partieFini(){
+		BtnN1.setText(null); 
+		imageP = new ImageIcon();
+		BtnN1.setIcon(null);
+	    BtnN2.setText("");
+	    imagel = new ImageIcon();
+		BtnN2.setIcon(null);
+		
+	    JLouest.setText("");
+	   
+		image = new ImageIcon();
+	    JLcentre.setIcon(null);
+	    String text = "<html>Partie Fini ! <br>";
+	    text += "relation avec le Geek :" + Geek.getNbpts() + " <br>";
+	    text += "relation avec le Drageur :" + Drageur.getNbpts() + " <br>";
+	    text += "</html>";
+	    JLcentre.setText(text);
+	    
+	    JLest.setText("");
+	    JL.setText("");
+	    if (JLouest.getActionListeners().length > 0) {
+		    JLouest.removeActionListener(JLouest.getActionListeners()[0]);
+		}
+	    if (JLest.getActionListeners().length > 0) {
+	    	JLest.removeActionListener(JLest.getActionListeners()[0]);
+		}
 	    
 	}
 	

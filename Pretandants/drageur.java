@@ -5,6 +5,14 @@ import Game.pileException;
 public class Drageur extends Pretendant implements IPretendant {
 
 	static int nbpts = 0;
+	public static int getNbpts() {
+		return nbpts;
+	}
+
+	public static void setNbpts(int nbpts) {
+		Drageur.nbpts = nbpts;
+	}
+
 	public Drageur() {
 		// TODO Auto-generated constructor stub
 	}
