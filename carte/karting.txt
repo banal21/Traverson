@@ -1,0 +1,10 @@
+apres-midi
+Cartes.Karting
+Ca ta plus, on va boire une petite biere?
+Ha non non c'est bon je vais rentree perso...
+Oui pourquoi pas on a pas beaucoup pus discuter!
+-20
+25
+Pretandants.Drageur
+
+carte/barDrageur.txt

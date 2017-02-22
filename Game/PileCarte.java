@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 import Cartes.CarteFactory;
@@ -169,7 +170,7 @@ public class PileCarte implements pile{
 			while (!is_pretendant) {
 				ICarte c;
 				c = depiler();
-				if (c.getM_lePretendant()[Game.indexAleatoire] == leP) {
+				if (Arrays.asList(c).contains(leP)) {
 					is_pretendant = true;
 					empiler(c);
 				}

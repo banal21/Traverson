@@ -6,5 +6,5 @@ oui, tu veux faire une longueur?
 0
 10
 Pretandants.Drageur
-piscine_longueur.txt
+carte/piscine_longueur.txt
 /

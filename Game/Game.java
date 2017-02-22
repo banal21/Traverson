@@ -1,6 +1,7 @@
 package Game;
 import java.lang.reflect.Constructor;
 
+import Cartes.CarteFactory;
 import Cartes.ICarte;
 import Pretandants.IPretendant;
 import Pretandants.Drageur;
@@ -48,6 +49,7 @@ public class Game {
 
 		Class<?> clazz;
 		try {
+			currentCarte.actionLancee();
 			clazz = Class.forName(currentCarte.getM_lePretendant()[indexAleatoire]);
 			//recuperation du constructeur de la classe trouvé
 			Constructor<?> ctor = clazz.getConstructor();
@@ -55,6 +57,9 @@ public class Game {
 			//Instanciation de l'interface Pretandant pour le bon type voulus
 			IPretendant pretendant = (IPretendant) ctor.newInstance(new Object[] {});
 			pretendant.evolutionRelation(Integer.parseInt(currentCarte.getM_reponseChoix1()[indexAleatoire]));
+			if (!currentCarte.getM_carteSuivanteChoix1().equals("")) {
+				pile.empiler(CarteFactory.createCarte(currentCarte.getM_carteSuivanteChoix1()));
+			}
 		}		
 		catch (Exception e){
 		System.out.println(e.toString());
@@ -68,6 +73,7 @@ public class Game {
 	public static void evolutionChoix2(){
 		Class<?> clazz;
 		try {
+			currentCarte.actionLancee();
 			clazz = Class.forName(currentCarte.getM_lePretendant()[indexAleatoire]);
 			//recuperation du constructeur de la classe trouvé
 			Constructor<?> ctor = clazz.getConstructor();
@@ -75,6 +81,9 @@ public class Game {
 			//Instanciation de l'interface Pretandant pour le bon type voulus
 			IPretendant pretendant = (IPretendant) ctor.newInstance(new Object[] {});
 			pretendant.evolutionRelation(Integer.parseInt(currentCarte.getM_reponseChoix2()[indexAleatoire]));
+			if (!currentCarte.getM_carteSuivanteChoix2().equals("") && !currentCarte.getM_carteSuivanteChoix2().equals("/")) {
+				pile.empiler(CarteFactory.createCarte(currentCarte.getM_carteSuivanteChoix2()));
+			}
 		}		
 		catch (Exception e){
 		System.out.println(e.toString());
