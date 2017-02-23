@@ -20,11 +20,28 @@ public class Geek extends Pretendant  implements IPretendant{
 
 	public void evolutionRelation(int nb){
 		nbpts= nbpts + nb;
-		if(nbpts >= 50){
+		if (nbpts >= 100) {
+			if (Game.currentCarte.getM_periode().equals("soir")){
+				this.rendezVous();
+			}
+		}
+		else if(nbpts >= 50){
 			Game.pile.depilerPretendant("geek");
 		}
 	}
-	public void rendezVous() throws pileException{
-		Game.pile.viderPile();
+	
+	@Override
+	public void rendezVous(){
+		try {
+			Game.pile.viderPile();
+		} catch (pileException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public boolean Rencontre_possible() {
+		return rencontre_possible;
 	}
 }

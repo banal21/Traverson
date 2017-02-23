@@ -49,7 +49,7 @@ public class Fenetre extends JFrame{
 
 		
 		this.setTitle("Reigns");
-		this.setSize(800, 550);
+		this.setSize(1920, 1080);
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    this.setLocationRelativeTo(null);  
 	    

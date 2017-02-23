@@ -1,5 +1,6 @@
 package Game;
 import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 
 import Cartes.CarteFactory;
 import Cartes.ICarte;
@@ -29,7 +30,17 @@ public class Game {
 				}
 				if (currentCarte.getM_lePretendant().length == currentCarte.getM_reponseChoix1().length && currentCarte.getM_lePretendant().length == currentCarte.getM_reponseChoix2().length) {
 					indexAleatoire = (int) (Math.random() * (currentCarte.getM_lePretendant().length));
-					F.afficheCarte(currentCarte);
+
+					Class<?> clazz;
+					clazz = Class.forName(currentCarte.getM_lePretendant()[indexAleatoire]);
+					Constructor<?> ctor = clazz.getConstructor();
+					IPretendant pretendant = (IPretendant) ctor.newInstance(new Object[] {});
+					if (pretendant.Rencontre_possible()) {
+						F.afficheCarte(currentCarte);
+					}
+					else{
+						nextCarte();
+					}
 				}
 				else{
 					nextCarte();
@@ -39,7 +50,7 @@ public class Game {
 	            Game.F.partieFini();
 			}
 				
-		} catch (pileException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

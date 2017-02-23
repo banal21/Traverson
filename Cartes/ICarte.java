@@ -53,4 +53,5 @@ public interface ICarte {
 	public void evolutionRelation();
 	
 	abstract void actionLancee();
+
 }
