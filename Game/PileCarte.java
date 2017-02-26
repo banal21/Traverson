@@ -17,9 +17,28 @@ public class PileCarte implements pile{
 	private ArrayList<ICarte> lesCartesMidi;
 	private ArrayList<ICarte> lesCartesAM;
 	private ArrayList<ICarte> lesCartesSoir;
+	
 
 	private static ArrayList<ICarte> lesCartesT;
 
+	private boolean enoughtCard(ArrayList<ICarte> list1, ArrayList<ICarte> list2, ArrayList<ICarte> list3){
+		int nb_listNotEmpty = 0;
+		boolean returnBool = false;
+		if (list1.size() > 0) {
+			nb_listNotEmpty++;
+		}
+		if (list2.size() > 0) {
+			nb_listNotEmpty++;
+		}
+		if (list3.size() > 0) {
+			nb_listNotEmpty++;
+		}
+		if (nb_listNotEmpty > 1) {
+			returnBool = true;
+		}
+		return returnBool;
+		
+	}
 	
 	public PileCarte(){
 		lesCartes = new ArrayList<ICarte>();
@@ -60,30 +79,56 @@ public class PileCarte implements pile{
 			Random r = new Random();
 			int a=0;
 			int i = lesCartesT.size();
-			while((a<i) && ( lesCartesSoir.size() != 0) && ( lesCartesAM.size() != 0) &&( lesCartesMatin.size() != 0)){
-				if( lesCartesSoir.size() != 0){
-					int valeur = 1 + r.nextInt(lesCartesSoir.size());
-					i= i-valeur;
-					for(int j=0; j<valeur; j++)
-						chargerCarteSoir(randomGenerator);
-				}
-				if( lesCartesAM.size() != 0){
-					int valeur = 1 + r.nextInt(lesCartesAM.size());
-					i= i-valeur;
-					for(int j=0; j<valeur; j++)
-						chargerCarteAM(randomGenerator);
-				}
-				chargerCarteMidi(randomGenerator);
-				
+
+			int valeur;
+			while((a<i) && (enoughtCard(lesCartesSoir, lesCartesAM, lesCartesMatin))){
 				if( lesCartesMatin.size() != 0){
-					int valeur = 1 + r.nextInt(lesCartesMatin.size());
+					if (lesCartesMatin.size() > 2 ) {
+						valeur = 1 + r.nextInt(2);
+					}
+					else{
+						valeur =  1 + r.nextInt(lesCartesMatin.size());
+					}
 					i= i-valeur;
 					for(int j=0; j<valeur; j++)
 						chargerCarteMatin(randomGenerator);
 				}
-
+				if( lesCartesAM.size() != 0){
+					if (lesCartesAM.size() > 2) {
+						valeur = 1 + r.nextInt(2);
+					}
+					else{
+						valeur = 1 + r.nextInt(lesCartesAM.size());
+					}
+					i= i-valeur;
+					for(int j=0; j<valeur; j++)
+						chargerCarteAM(randomGenerator);
+				}
+				if( lesCartesSoir.size() != 0){
+					if (lesCartesSoir.size() > 2) {
+						valeur = 1 + r.nextInt(2);
+					}
+					else{
+						valeur = 1 + r.nextInt(lesCartesSoir.size());
+					}
+					i= i-valeur;
+					for(int j=0; j<valeur; j++)
+						chargerCarteSoir(randomGenerator);
+				}
 			}
 		}
+
+		ArrayList<ICarte> lesCartesProv = new ArrayList<ICarte>();
+		while (!lesCartes.isEmpty()) {
+			try {
+				lesCartesProv.add(depiler());
+			} catch (pileException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		lesCartes = lesCartesProv;
+		
 	}
 	
 	public void chargerCarteMatin(Random randomGenerator){
@@ -143,7 +188,7 @@ public class PileCarte implements pile{
             Game.F.partieFini();
         }
         else {
-            lesCartes.remove(this.sommet());
+        	lesCartes.removeAll(lesCartes);
         }
 	}
 
@@ -170,7 +215,7 @@ public class PileCarte implements pile{
 			while (!is_pretendant) {
 				ICarte c;
 				c = depiler();
-				if (Arrays.asList(c).contains(leP)) {
+				if (Arrays.asList(c.getM_lePretendant()).contains(leP)) {
 					is_pretendant = true;
 					empiler(c);
 				}

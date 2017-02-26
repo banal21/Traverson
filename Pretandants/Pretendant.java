@@ -6,7 +6,5 @@ public class Pretendant {
 	private int m_point;
 	static boolean rencontre_possible = true;
 	
-	public void rendezVous() throws pileException{
-		
-	}
+
 }

@@ -1,0 +1,10 @@
+apres-midi
+Cartes.Course
+Besoin d'aide pour faire tes courses?
+Tu veut pas m'aider a choisir mes lingette non plus?
+Si tu veux j'ai besoin de bras fort!
+-30
+35
+Pretandants.Lourd
+
+/

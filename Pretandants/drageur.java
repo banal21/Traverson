@@ -6,6 +6,7 @@ import Game.pileException;
 public class Drageur extends Pretendant implements IPretendant {
 
 	static int nbpts = 0;
+	public static String message = "";
 	
 	public boolean Rencontre_possible() {
 		return rencontre_possible;
@@ -25,8 +26,8 @@ public class Drageur extends Pretendant implements IPretendant {
 	
 	@Override
 	public void rendezVous(){
-		PileCarte test = new PileCarte();
 		nbpts = -200;
+		message = "Le drageur vous deteste !";
 		rencontre_possible = false;
 	}
 

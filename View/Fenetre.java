@@ -1,5 +1,6 @@
 package View;
 import java.awt.Dimension;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -14,6 +15,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
 
@@ -21,7 +23,9 @@ import Cartes.ICarte;
 import Game.Game;
 import Game.pileException;
 import Pretandants.Drageur;
+import Pretandants.Gay;
 import Pretandants.Geek;
+import Pretandants.Lourd;
 
 
 @SuppressWarnings("serial")
@@ -49,7 +53,7 @@ public class Fenetre extends JFrame{
 
 		
 		this.setTitle("Reigns");
-		this.setSize(1920, 1080);
+		this.setSize(1100, 650);
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    this.setLocationRelativeTo(null);  
 	    
@@ -64,12 +68,12 @@ public class Fenetre extends JFrame{
 	    
 	    //Nord
 	    pan1 = new JPanel();
-	    pan1.setPreferredSize(new Dimension(800, 100));
+	    pan1.setPreferredSize(new Dimension(970, 100));
 	    BtnN1 = new JLabel();
-	    BtnN1.setPreferredSize(new Dimension(380, 100));
+	    BtnN1.setPreferredSize(new Dimension(480, 100));
 	    BtnN1.setBorder(loweredetched);
 		BtnN2 = new JLabel();
-	    BtnN2.setPreferredSize(new Dimension(380, 100));
+	    BtnN2.setPreferredSize(new Dimension(480, 100));
 	    BtnN2.setBorder(loweredetched);
 
 	    pan1.add(BtnN1);
@@ -77,7 +81,7 @@ public class Fenetre extends JFrame{
 	    
 	    //Milieu
 	    pan3 = new JPanel();
-	    pan3.setPreferredSize(new Dimension(800, 300));
+	    pan3.setPreferredSize(new Dimension(1000, 300));
 
 	    //Ouest
 	    JLouest = new JButton();
@@ -85,7 +89,7 @@ public class Fenetre extends JFrame{
 	    pan3.add(JLouest);
 	    //Centre
 	    JLcentre = new JLabel();
-	    JLcentre.setPreferredSize(new Dimension(350, 300));
+	    JLcentre.setPreferredSize(new Dimension(550, 300));
 	    JLcentre.setBorder(loweredetched);
 	    
 	    pan3.add(JLcentre);
@@ -97,14 +101,14 @@ public class Fenetre extends JFrame{
 	    
 		  //Sud
 	    pan2 = new JPanel();
-	    pan2.setPreferredSize(new Dimension(800, 100));
+	    pan2.setPreferredSize(new Dimension(960, 110));
 	    JL = new JLabel();
-	    JL.setPreferredSize(new Dimension(760, 100));
+	    JL.setPreferredSize(new Dimension(960, 100));
 	    JL.setBorder(loweredetched);
 	    pan2.add(JL);
 	    
 	    pan4 = new JPanel();
-	    pan4.setPreferredSize(new Dimension(800, 550));
+	    pan4.setPreferredSize(new Dimension(1000, 550));
 	  //On positionne maintenant ces trois lignes en colonne
 	    pan4.add(pan1);
 	    pan4.add(pan3);
@@ -143,19 +147,29 @@ public class Fenetre extends JFrame{
 	
 	public void afficheCarte(ICarte c){
 		BtnN1.setText(c.getM_periode()); 
-		imageP = new ImageIcon( "periodeImg/"+c.getM_periode()+".jpg" );
-		BtnN1.setIcon(imageP);
-	    BtnN2.setText(c.getM_lieux());
-	    imagel = new ImageIcon( "lieux/"+c.getM_lieux()+".jpg" );
-		BtnN2.setIcon(imagel);
+		ImageIcon imageIcon  = new ImageIcon( "periodeImg/"+c.getM_periode()+".jpg" );
+		Image image = imageIcon.getImage(); // transform it 
+		Image newimg = image.getScaledInstance(350, 150,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+		imageIcon = new ImageIcon(newimg);
+		BtnN1.setIcon(imageIcon);
+	    BtnN2.setText(c.getM_lieux().substring(7));
+	    imageIcon = new ImageIcon( "lieux/"+c.getM_lieux()+".jpg" );
+		image = imageIcon.getImage(); // transform it 
+		newimg = image.getScaledInstance(350, 150,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+		imageIcon = new ImageIcon(newimg);
+		BtnN2.setIcon(imageIcon);
 		
-	    JLouest.setText(c.getM_choix1());
+	    JLouest.setText("<html>" + Character.toUpperCase(c.getM_choix1().charAt(0)) + c.getM_choix1().substring(1) + "</html>");
 	   
-		image = new ImageIcon( "pretendant/"+c.getM_lePretendant()[Game.indexAleatoire]+".jpg" );
-	    JLcentre.setIcon(image);
+	    imageIcon = new ImageIcon( "pretendant/"+c.getM_lePretendant()[Game.indexAleatoire]+".jpg" );
+		image = imageIcon.getImage(); // transform it 
+		newimg = image.getScaledInstance(550, 300,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+		imageIcon = new ImageIcon(newimg);
+	    JLcentre.setIcon(imageIcon);
 	    JLcentre.setText("");
-	    JLest.setText(c.getM_choix2());
-	    JL.setText(c.getM_question());
+	    JLest.setText("<html>" + Character.toUpperCase(c.getM_choix2().charAt(0)) + c.getM_choix2().substring(1) + "</html>");
+	    JL.setText("<html>" + Character.toUpperCase(c.getM_question().charAt(0)) + c.getM_question().substring(1)  + "</html>");
+	    JL.setHorizontalAlignment(SwingConstants.CENTER);
 	    if (JLouest.getActionListeners().length > 0) {
 		    JLouest.removeActionListener(JLouest.getActionListeners()[0]);
 		}
@@ -194,8 +208,11 @@ public class Fenetre extends JFrame{
 		image = new ImageIcon();
 	    JLcentre.setIcon(null);
 	    String text = "<html>Partie Fini ! <br>";
+	    text += Geek.message +" " + Drageur.message + " " + Gay.message + " " + Lourd.message + " <br>";
 	    text += "relation avec le Geek :" + Geek.getNbpts() + " <br>";
 	    text += "relation avec le Drageur :" + Drageur.getNbpts() + " <br>";
+	    text += "relation avec la Gay :" + Gay.getNbpts() + " <br>";
+	    text += "relation avec le Lourd :" + Lourd.getNbpts() + " <br>";
 	    text += "</html>";
 	    JLcentre.setText(text);
 	    

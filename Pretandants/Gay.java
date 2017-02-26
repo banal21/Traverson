@@ -2,10 +2,9 @@ package Pretandants;
 import Game.Game;
 import Game.pileException;
 
-public class Geek extends Pretendant  implements IPretendant{
+public class Gay extends Pretendant  implements IPretendant{
 
 	private static int nbpts = 0;
-
 	public static String message = "";
 	
 	public static int getNbpts() {
@@ -13,10 +12,10 @@ public class Geek extends Pretendant  implements IPretendant{
 	}
 
 	public static void setNbpts(int nbpts) {
-		Geek.nbpts = nbpts;
+		Gay.nbpts = nbpts;
 	}
 
-	public Geek() {
+	public Gay() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -24,18 +23,15 @@ public class Geek extends Pretendant  implements IPretendant{
 		nbpts= nbpts + nb;
 		if (nbpts >= 100) {
 			if (Game.currentCarte.getM_periode().equals("soir")){
-				rendezVous();
+				this.rendezVous();
 			}
-		}
-		else if(nbpts >= 50){
-			Game.pile.depilerPretendant("Pretandants.Geek");
 		}
 	}
 	
 	@Override
 	public void rendezVous(){
 		try {
-			message = "Le vous sortez avec le geek !";
+			message = "la lesbienne vous aime ! ";
 			Game.pile.viderPile();
             Game.F.partieFini();
 		} catch (pileException e) {

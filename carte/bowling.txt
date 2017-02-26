@@ -3,8 +3,8 @@ Cartes.Bowling
 On arrete maintenant?
 Oui je voudrais rentree tot!
 Deja? je commence tout juste a faire des strikes, tu me motives?
--20;30
-25;-15
+-40;50
+45;-35
 Pretandants.Drageur;Pretandants.Geek
 
 /

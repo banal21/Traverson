@@ -1,10 +1,10 @@
-apres-midi
+matin
 Cartes.Piscine
-Je suis contente que tu soit venu a la piscine, tu aime nager?
+Je suis contente que tu soit venu a la piscine, tu aimes nager?
 non j'accompagne mon copain
 oui, tu veux faire une longueur?
 0
 10
 Pretandants.Drageur
-carte/piscine_longueur.txt
-/
+
+cartes_speciales/piscine_longueur.txt
